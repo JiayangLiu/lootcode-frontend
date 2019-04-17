@@ -1,0 +1,20 @@
+- 4.16 11:00 PM
+	Project initialized
+	UI outline + components created
+	bs-navbar finished
+	Components {
+		bs-navbar
+		home
+		problems
+		companies
+		tags
+		editor
+		login
+		admin  /  problems
+		my     /  dashboard
+	}
+
+	
+
+- 4.17 11:00 AM
+	Login + Logout finished
