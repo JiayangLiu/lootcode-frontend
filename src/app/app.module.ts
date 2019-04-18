@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
 import { HttpModule, Http, BaseRequestOptions } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { mockBackendProvider } from './mock-backend/mock-auth';
 import { FormsModule }   from '@angular/forms';
@@ -59,7 +60,7 @@ import { ProblemService } from './services/problem.service';
     ]),
     NgbModule.forRoot(),
     FormsModule,
-    HttpModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,

@@ -1,4 +1,4 @@
-- 4.16 11:00 PM
+- 4.16 23:00
 	Project initialized
 	UI outline + components created
 	bs-navbar finished
@@ -15,6 +15,18 @@
 	}
 
 	
-
-- 4.17 11:00 AM
+- 4.17 11:00
 	Login + Logout finished
+
+
+- 4.17 15:00
+	Problem Management finished
+
+
+- 4.17 23:30
+	HttpClient Get Test success
+	Problem List finished
+
+
+- 4.18 9:00
+	Problem Table format finished
