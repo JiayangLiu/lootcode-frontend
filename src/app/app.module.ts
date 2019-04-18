@@ -18,6 +18,7 @@ import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.co
 import { LoginComponent } from './login/login.component';
 
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
@@ -30,6 +31,8 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +49,10 @@ import { DataTableModule } from 'angular7-data-table';
   ],
   imports: [
     BrowserModule,
+    MatTabsModule,
     AppRoutingModule,
     MatGridListModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'problems/:id', component: EditorComponent },

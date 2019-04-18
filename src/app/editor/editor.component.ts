@@ -16,7 +16,8 @@ export class EditorComponent implements OnInit {
 
   problemID: String;
   subscriptionProblems: Subscription;
-  problem: ProblemDetail;
+  problem: ProblemDetail = null;
+
   constructor(
     private route: ActivatedRoute, 
     private authService: AuthService,
@@ -30,7 +31,7 @@ export class EditorComponent implements OnInit {
 
     });
     console.log(this.authService.currentUser.userid)
-    this.subscriptionProblems = this.service.getProblemDetail()
+    this.subscriptionProblems = this.service.getProblemDetail(this.authService.currentUser.userid, +this.problemID)
       .subscribe(problem => {
         this.problem = problem;
         console.log(this.problem);

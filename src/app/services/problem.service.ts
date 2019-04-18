@@ -26,7 +26,7 @@ export class ProblemService {
     return this.problemsObservable;
   }
 
-  getProblemDetail() {
+  getProblemDetail(username:string, problemID:number) {
     this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
     return this.problemDetailObservable;
   }

@@ -1,7 +1,36 @@
-<mat-grid-list cols="3" >
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <!-- <mat-grid-tile>4</mat-grid-tile> -->
-</mat-grid-list>
+<div class="d-md-flex h-md-100 align-items-center">
 
+  <!-- First Half -->
+  
+  <div class="col-md-6 p-0 bg-white h-md-100">
+      <div class="d-md-flex h-100 p-0 justify-content-center">
+          <div class="text" *ngIf="problem">
+              <h2>{{problem.id}}. {{problem.name}}</h2>
+              <p>{{problem.difficulty}}</p>
+              <p>{{problem.company}}</p>
+              <p>{{problem.tag}}</p>
+              <p>{{problem.desc}}</p>
+            </div>
+      </div>
+  </div>
+  
+  <!-- Second Half -->
+  
+  <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+      <div class="d-md-flex h-md-100 p-0 justify-content-center">
+          <div class="text" *ngIf="problem">
+            <mat-tab-group animationDuration="500ms">
+                <mat-tab *ngFor="let item of problem.code; let i = index" label= "{{item.isAccepted? 'Accepted': 'Not Accepted'}}"> 
+                    <p>{{item.performance}}</p>
+                    <p>{{item.code_language}}</p>
+                    <p>{{item.time_created}}</p>
+                    <p>{{item.time_modified}}</p>
+                    <p>{{item.content}}</p>
+                    <p>{{item.note.content}}</p>
+                </mat-tab>
+            </mat-tab-group>
+          </div>
+      </div>
+  </div>
+      
+</div>
