@@ -1,3 +1,53 @@
 <p>
-  problems works!
+  <input
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search...">
 </p>
+
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
+    </data-table-column>
+  
+    <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
+      <ng-template #dataTableCell let-item="item">
+        <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
+          {{ item.name }}
+        </a>
+      </ng-template>
+    </data-table-column>
+  
+    <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
+      <ng-template #dataTableCell let-item="item">
+        <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
+          {{ item.difficulty }}
+        </span>
+      </ng-template>
+    </data-table-column>
+  
+  </data-table>
+  
+  
+  
+  <!-- <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Difficulty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of problems">
+        <td>{{ p.id }}</td>
+        <td>
+          <a class="title" [routerLink]="['/problems',p.id]" routerLinkActive="active">{{ p.name }}</a>
+        </td>
+        <td>
+          <span class="{{'pull-left label difficulty diff-' + p.difficulty.toLocaleLowerCase()}}">
+            {{ p.difficulty }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
