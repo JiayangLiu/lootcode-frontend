@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { TagsComponent } from './tags/tags.component';
 import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.component';
 import { LoginComponent } from './login/login.component';
 
+import {MatGridListModule} from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
@@ -45,12 +47,13 @@ import { ProblemService } from './services/problem.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatGridListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'problems/:id', component: EditorComponent },
       { path: 'problems', component: ProblemsComponent },
       { path: 'companies', component: CompaniesComponent },
       { path: 'tags', component: TagsComponent },
-      { path: 'editor', component: EditorComponent },
       { path: 'login', component: LoginComponent },
       { path: 'my/dashboard', component: MyDashboardComponent },
       { path: 'admin/problems', component: AdminProblemsComponent },
@@ -59,7 +62,7 @@ import { ProblemService } from './services/problem.service';
     ]),
     NgbModule.forRoot(),
     FormsModule,
-    HttpModule,
+    HttpClientModule
   ],
   providers: [
     AuthService,

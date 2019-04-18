@@ -1,15 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Problem } from '../problems/problem.model';
+import { ProblemDetail } from '../problems/problem.detail.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProblemService {
-  private url = '';
+  private url = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problems';
+  private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
+
+  problemsObservable : Observable<Problem[]>;
+  problemDetailObservable: Observable<ProblemDetail>;
 
   getAllProblems() {
-    return this.http.get(this.url);
+    this.problemsObservable = this.http.get<Problem[]>(this.url);
+    return this.problemsObservable;
+  }
+
+  getProblemDetail() {
+    this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
+    return this.problemDetailObservable;
   }
 }
