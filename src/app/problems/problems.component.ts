@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProblemService } from '../services/problem.service';
 import { Problem } from '../problems/problem.model';
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 import { DataTableResource } from 'angular7-data-table';
 
 @Component({
@@ -9,11 +9,11 @@ import { DataTableResource } from 'angular7-data-table';
   templateUrl: './problems.component.html',
   styleUrls: ['./problems.component.css']
 })
-export class ProblemsComponent implements OnInit {
-  problems: Problem[];
+export class ProblemsComponent implements OnInit, OnDestroy {
+  problems: Problem[];  // problems array from Server(Backend)
   subscriptionProblems: Subscription;
   tableResource: DataTableResource<Problem>;
-  items: Problem[] = [];
+  items: Problem[] = [];  // problems array to be rendered in the current page
   itemCount: number;
 
   constructor(private service: ProblemService) {
@@ -42,5 +42,20 @@ export class ProblemsComponent implements OnInit {
     
     this.tableResource.query(params)
       .then(items => this.items = items);
+  }
+
+  filter(query: string) {
+    if (!this.tableResource)
+      return;
+
+    let filteredProblems = (query) ?
+      this.problems.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+      : this.problems;
+
+    this.initializeTable(filteredProblems);
+  }
+
+  ngOnDestroy() {
+    this.subscriptionProblems.unsubscribe();
   }
 }
