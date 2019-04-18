@@ -4,40 +4,31 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Problem } from '../problems/problem.model';
-<<<<<<< HEAD
 import { ProblemDetail } from '../problems/problem.detail.model';
-=======
->>>>>>> origin
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProblemService {
   private url = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problems';
-<<<<<<< HEAD
-  private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
 
+  private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
   constructor(private http: HttpClient) { }
 
   problemsObservable : Observable<Problem[]>;
   problemDetailObservable: Observable<ProblemDetail>;
-=======
 
-  constructor(private http: HttpClient) { }
-  problemsObservable : Observable<Problem[]>;
->>>>>>> origin
 
   getAllProblems() {
     this.problemsObservable = this.http.get<Problem[]>(this.url);
     return this.problemsObservable;
-<<<<<<< HEAD
   }
 
   getProblemDetail() {
     this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
     return this.problemDetailObservable;
-=======
->>>>>>> origin
   }
 
   // createProblem(resource) {

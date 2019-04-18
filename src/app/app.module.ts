@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -63,12 +62,8 @@ import { DataTableModule } from 'angular7-data-table';
     ]),
     NgbModule.forRoot(),
     FormsModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
     HttpClientModule,
     DataTableModule
->>>>>>> origin
   ],
   providers: [
     AuthService,
