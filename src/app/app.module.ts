@@ -28,7 +28,7 @@ import { FormsModule }   from '@angular/forms';
 import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
-
+import { DataTableModule } from 'angular7-data-table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +60,8 @@ import { ProblemService } from './services/problem.service';
     ]),
     NgbModule.forRoot(),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTableModule
   ],
   providers: [
     AuthService,

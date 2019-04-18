@@ -1,16 +1,28 @@
-<!-- <div class="container">
-  <div class="list-group">
-    <a class="list-group-item" *ngFor="let prob of problems"
-       [routerLink]="['/problems',prob.id]" routerLinkActive="active">
-      <span class="{{'pull-left label difficulty diff-' + prob.difficulty.toLocaleLowerCase()}}">
-        {{prob.difficulty}}
-      </span>
-      <strong class="title">{{prob.id}}. {{prob.name}}</strong>
-    </a>
-  </div>
-</div> -->
+<data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+  <data-table-column [property]="'id'" [header]="'Id'" [sortable]="true" [resizable]="true">
+  </data-table-column>
 
-<table class="table">
+  <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
+    <ng-template #dataTableCell let-item="item">
+      <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
+        {{ item.name }}
+      </a>
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
+    <ng-template #dataTableCell let-item="item">
+      <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
+        {{ item.difficulty }}
+      </span>
+    </ng-template>
+  </data-table-column>
+
+</data-table>
+
+
+
+<!-- <table class="table">
   <thead>
     <tr>
       <th>Id</th>
@@ -26,9 +38,9 @@
       </td>
       <td>
         <span class="{{'pull-left label difficulty diff-' + p.difficulty.toLocaleLowerCase()}}">
-          {{p.difficulty}}
+          {{ p.difficulty }}
         </span>
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
