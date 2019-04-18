@@ -17,6 +17,7 @@ import { TagsComponent } from './tags/tags.component';
 import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.component';
 import { LoginComponent } from './login/login.component';
 
+import {MatGridListModule} from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
@@ -46,12 +47,13 @@ import { DataTableModule } from 'angular7-data-table';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatGridListModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
+      { path: 'problems/:id', component: EditorComponent },
       { path: 'problems', component: ProblemsComponent },
       { path: 'companies', component: CompaniesComponent },
       { path: 'tags', component: TagsComponent },
-      { path: 'editor', component: EditorComponent },
       { path: 'login', component: LoginComponent },
       { path: 'my/dashboard', component: MyDashboardComponent },
       { path: 'admin/problems', component: AdminProblemsComponent },

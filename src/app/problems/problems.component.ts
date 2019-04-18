@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProblemService } from '../services/problem.service';
+
+import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Problem } from '../problems/problem.model';
-import { Subscription } from "rxjs";
+import {Subscription} from "rxjs";
 import { DataTableResource } from 'angular7-data-table';
 
 @Component({
@@ -9,6 +12,8 @@ import { DataTableResource } from 'angular7-data-table';
   templateUrl: './problems.component.html',
   styleUrls: ['./problems.component.css']
 })
+
+
 export class ProblemsComponent implements OnInit, OnDestroy {
   problems: Problem[];  // problems array from Server(Backend)
   subscriptionProblems: Subscription;

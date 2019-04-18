@@ -4,6 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Problem } from '../problems/problem.model';
+import { ProblemDetail } from '../problems/problem.detail.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +14,21 @@ import { Problem } from '../problems/problem.model';
 export class ProblemService {
   private url = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problems';
 
+  private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
   constructor(private http: HttpClient) { }
+
   problemsObservable : Observable<Problem[]>;
+  problemDetailObservable: Observable<ProblemDetail>;
+
 
   getAllProblems() {
     this.problemsObservable = this.http.get<Problem[]>(this.url);
     return this.problemsObservable;
+  }
+
+  getProblemDetail() {
+    this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
+    return this.problemDetailObservable;
   }
 
   // createProblem(resource) {
