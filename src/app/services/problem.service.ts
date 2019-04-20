@@ -41,6 +41,11 @@ export class ProblemService {
     return this.problemDetailObservable;
   }
 
+  deleteProblem(problem_id) {
+    this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/admin/delete/'+problem_id);
+    return this.problemsObservable;
+  }
+
   // createProblem(resource) {
   //   return this.http.post(this.url, JSON.stringify(resource))
   //     .map(response => response);

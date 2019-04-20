@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProblemService } from '../services/problem.service';
 
 import { HttpClient } from '@angular/common/http';
-import { Http } from '@angular/http';
 import { Problem } from '../problems/problem.model';
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 import { DataTableResource } from 'angular7-data-table';
 
 @Component({
@@ -12,8 +11,6 @@ import { DataTableResource } from 'angular7-data-table';
   templateUrl: './problems.component.html',
   styleUrls: ['./problems.component.css']
 })
-
-
 export class ProblemsComponent implements OnInit, OnDestroy {
   problems: Problem[];  // problems array from Server(Backend)
   subscriptionProblems: Subscription;
@@ -56,17 +53,6 @@ export class ProblemsComponent implements OnInit, OnDestroy {
     
     this.tableResource.query(params)
       .then(items => this.items = items);
-  }
-
-  filter(query: string) {
-    if (!this.tableResource)
-      return;
-
-    let filteredProblems = (query) ?
-      this.problems.filter(p => p.title.toLowerCase().includes(query.toLowerCase()))
-      : this.problems;
-
-    this.initializeTable(filteredProblems);
   }
 
   ngOnDestroy() {
