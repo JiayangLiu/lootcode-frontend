@@ -8,8 +8,8 @@ export class AuthService {
   constructor(private http: Http) {
   }
 
-  login(credentials) { 
-   return this.http.post('/api/authenticate', 
+  login(credentials) {
+    return this.http.post('/api/authenticate',
       JSON.stringify(credentials))
       .pipe(map(response => {   // different after upgrade
         let result = response.json();
@@ -21,12 +21,25 @@ export class AuthService {
       }));
   }
 
+  signUp(credentials) {
+    return this.http.post('/api/signup',
+    JSON.stringify(credentials))
+    .pipe(map(response => {
+      let result = response.json();
+      if (result && result.token) {
+        localStorage.setItem('token', result.token);
+        return true;
+      } else
+        return false;
+    }));
+  }
+
   // delete the toke from localStorage
   logout() {
     localStorage.removeItem('token');
   }
 
-  isLoggedIn() { 
+  isLoggedIn() {
     return tokenNotExpired();
     // let jwtHelper = new JwtHelper();
     // let token = localStorage.getItem('token');
@@ -35,7 +48,7 @@ export class AuthService {
     //   return false;
 
     // let isExpired = jwtHelper.isTokenExpired(token);
-    
+
     // return !isExpired;
   }
 

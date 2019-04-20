@@ -30,8 +30,9 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
-import { MatSelectModule, MatFormFieldModule, MatOptionModule } from '@angular/material';
+import { MatSelectModule, MatFormFieldModule, MatOptionModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminProblemsComponent,
     LoginComponent,
     MyDashboardComponent,
-    ProblemFormComponent
+    ProblemFormComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'companies', component: CompaniesComponent },
       { path: 'tags', component: TagsComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
       { path: 'my/dashboard', component: MyDashboardComponent },
       { path: 'admin/problems', component: AdminProblemsComponent },
       { path: 'admin/problems/new', component: ProblemFormComponent }
@@ -71,6 +74,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatFormFieldModule,
     MatOptionModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
   providers: [
