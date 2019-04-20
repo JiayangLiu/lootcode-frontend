@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Problem } from '../problems/problem.model';
 import { ProblemDetail } from '../problems/problem.detail.model';
-
+import { UserProblem} from '../problems/problem.detail.model';
 
 
 @Injectable({
@@ -19,7 +19,7 @@ export class ProblemService {
 
   problemsObservable : Observable<Problem[]>;
   problemDetailObservable: Observable<ProblemDetail>;
-
+  userProblem: UserProblem;
 
   getAllProblems() {
     this.problemsObservable = this.http.get<Problem[]>(this.url);
@@ -28,6 +28,13 @@ export class ProblemService {
 
   getProblemDetail(username:string, problemID:number) {
     this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
+    return this.problemDetailObservable;
+  }
+
+  getProblemDetailPost(username:string, problemID:number) {
+    this.userProblem.problem_id = problemID;
+    this.userProblem.user_id = username;
+    this.problemDetailObservable = this.http.post<ProblemDetail>(this.url4detailproblem, this.userProblem);
     return this.problemDetailObservable;
   }
 

@@ -3,7 +3,7 @@ export class ProblemDetail {
     name: string;
     desc: string;
     difficulty: string;
-    company: string;
+    Company: string[];
     tag: string;
     code: Code[];
 }
@@ -22,4 +22,9 @@ export class Note{
     time_created: string;
     time_modified: string;
     content: string;
+}
+
+export class UserProblem{
+    user_id: string;
+    problem_id: number;
 }

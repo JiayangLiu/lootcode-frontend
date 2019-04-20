@@ -2,23 +2,20 @@
 
   <!-- First Half -->
   
-  <div class="col-md-6 p-0 bg-white h-md-100">
-      <div class="d-md-flex h-100 p-0 justify-content-center">
-          <div class="text" *ngIf="problem">
-              <h2>{{problem.id}}. {{problem.name}}</h2>
-              <p>{{problem.difficulty}}</p>
-              <p>{{problem.company}}</p>
-              <p>{{problem.tag}}</p>
-              <p>{{problem.desc}}</p>
-            </div>
-      </div>
+  <div class="col-md-6 bg-white h-md-100">
+    <div class="text" *ngIf="problem">
+        <h2>{{problem.id}}. {{problem.name}}</h2>
+        <p>{{problem.difficulty}}</p>
+        <p *ngFor="let com of problem.Company">{{com}}</p>
+        <p>{{problem.tag}}</p>
+        <p>{{problem.desc}}</p>
+    </div>
   </div>
   
   <!-- Second Half -->
   
-  <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
-      <div class="d-md-flex h-md-100 p-0 justify-content-center">
-          <div class="text" *ngIf="problem">
+  <div class="col-md-6 bg-white h-md-100 loginarea">
+        <div class="text" *ngIf="problem">
             <mat-tab-group animationDuration="500ms">
                 <mat-tab *ngFor="let item of problem.code; let i = index" label= "{{item.isAccepted? 'Accepted': 'Not Accepted'}}"> 
                     <p>{{item.performance}}</p>
@@ -29,8 +26,7 @@
                     <p>{{item.note.content}}</p>
                 </mat-tab>
             </mat-tab-group>
-          </div>
-      </div>
+        </div>
   </div>
       
 </div>
