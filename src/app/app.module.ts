@@ -30,6 +30,9 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
+import { MatSelectModule, MatFormFieldModule, MatOptionModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +66,12 @@ import { DataTableModule } from 'angular7-data-table';
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    DataTableModule
+    DataTableModule,
+    
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

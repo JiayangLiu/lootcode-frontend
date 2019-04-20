@@ -12,7 +12,7 @@ import { ProblemDetail } from '../problems/problem.detail.model';
   providedIn: 'root'
 })
 export class ProblemService {
-  private url = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problems';
+  private url = 'http://power3.cs.virginia.edu:18888/api/problems';
 
   private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
   constructor(private http: HttpClient) { }
@@ -24,6 +24,16 @@ export class ProblemService {
   getAllProblems() {
     this.problemsObservable = this.http.get<Problem[]>(this.url);
     return this.problemsObservable;
+  }
+
+  getProblemCompany(company_name) {
+    this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/companies/'+company_name);
+    return this.problemsObservable;
+ }
+
+  getProblemTag(tag_name) {
+  this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/tags/'+tag_name);
+  return this.problemsObservable;
   }
 
   getProblemDetail() {

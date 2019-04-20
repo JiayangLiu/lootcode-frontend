@@ -30,3 +30,12 @@
 
 - 4.18 9:00
 	Problem Table format finished
+
+
+- 4.18 13:00
+	Problem Table sort finished
+	Problem Table search finished
+	Bugs:
+		1. Table default index should be hidden
+		2. Table pagement not work at initial rendering
+		

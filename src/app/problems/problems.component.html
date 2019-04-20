@@ -6,26 +6,26 @@
 </p>
 
 <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
-    <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
-    </data-table-column>
-  
-    <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
-      <ng-template #dataTableCell let-item="item">
-        <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
-          {{ item.name }}
-        </a>
-      </ng-template>
-    </data-table-column>
-  
-    <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
-      <ng-template #dataTableCell let-item="item">
-        <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
-          {{ item.difficulty }}
-        </span>
-      </ng-template>
-    </data-table-column>
-  
-  </data-table>
+  <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
+  </data-table-column>
+
+  <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
+    <ng-template #dataTableCell let-item="item">
+      <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
+        {{ item.title }}
+      </a>
+    </ng-template>
+  </data-table-column>
+
+  <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
+    <ng-template #dataTableCell let-item="item">
+      <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
+        {{ item.difficulty }}
+      </span>
+    </ng-template>
+  </data-table-column>
+
+</data-table>
   
   
   

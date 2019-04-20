@@ -34,6 +34,15 @@ export class ProblemsComponent implements OnInit, OnDestroy {
 
   // factorizing the data table initialization process
   private initializeTable(problems: Problem[]) {
+    for (let p of problems) {
+      if (p.difficulty == 1)
+        p.difficulty = "Easy";
+      if (p.difficulty == 2)
+        p.difficulty = "Medium";
+      if (p.difficulty == 3)
+        p.difficulty = "Hard";
+    }
+
     this.tableResource = new DataTableResource(problems);
     this.tableResource.query({ offset: 0 })
       .then(items => this.items = items);
@@ -54,7 +63,7 @@ export class ProblemsComponent implements OnInit, OnDestroy {
       return;
 
     let filteredProblems = (query) ?
-      this.problems.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+      this.problems.filter(p => p.title.toLowerCase().includes(query.toLowerCase()))
       : this.problems;
 
     this.initializeTable(filteredProblems);
