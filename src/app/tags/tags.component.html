@@ -1,4 +1,5 @@
-<div class="d-md-flex h-md-100 p-0 justify-content-center" style="margin-top: 3em;">
+<div class="component-body">
+  <div class="d-md-flex h-md-100 p-0 justify-content-center" style="margin-top: 3em;">
     <mat-form-field>
       <mat-label>Select a tag</mat-label>
       <mat-select [(ngModel)]="selectedValue" name="tag" (ngModelChange)="reloadTag()">
@@ -9,12 +10,12 @@
       </mat-select>
     </mat-form-field>
   </div>
-  
-  
+
+
   <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
     <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
     </data-table-column>
-  
+
     <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
       <ng-template #dataTableCell let-item="item">
         <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
@@ -22,7 +23,7 @@
         </a>
       </ng-template>
     </data-table-column>
-  
+
     <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
       <ng-template #dataTableCell let-item="item">
         <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
@@ -30,5 +31,6 @@
         </span>
       </ng-template>
     </data-table-column>
-  
+
   </data-table>
+</div>
