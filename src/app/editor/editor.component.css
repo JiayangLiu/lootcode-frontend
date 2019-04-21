@@ -24,3 +24,49 @@ mat-grid-tile {
 .text{
     margin-right: 20px;
 }
+
+.title{
+    font-size: 36px;
+}
+
+.difficulty{
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.easy {
+    color: green;
+}
+
+.medium {
+    color: yellow;
+}
+
+.hard {
+    background-color: red;
+}
+
+.desc{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+p{
+    white-space: pre-line;
+}
+
+#language{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+/* #note{
+    font-weight: 200;
+} */
+
+
+/* pre.prettyprint {
+    border: none !important;
+} */

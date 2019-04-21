@@ -1,29 +1,84 @@
+<!-- <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script> -->
 <div class="d-md-flex h-md-100 align-items-center">
 
   <!-- First Half -->
   
-  <div class="col-md-6 bg-white h-md-100">
+  <div class="col-md-4 bg-white h-md-100">
     <div class="text" *ngIf="problem">
-        <h2>{{problem.id}}. {{problem.name}}</h2>
-        <p>{{problem.difficulty}}</p>
-        <p *ngFor="let com of problem.Company">{{com}}</p>
-        <p>{{problem.tag}}</p>
-        <p>{{problem.desc}}</p>
+
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title class="title">{{problem.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content >
+            <p md-body-1 class="desc">
+                {{problem.description}}
+            </p>
+            </mat-card-content>
+        </mat-card>
+        <p></p>
+        <mat-accordion MatAccordionDisplayMode = 'flat'>
+            <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Difficulty
+                    </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p class="difficulty" [ngClass]="{
+                        'easy' : problem.difficulty == 1,
+                        'medium' : problem.difficulty == 2,
+                        'hard' : problem.difficulty == 3}">
+                        {{getDifficulty(problem.difficulty)}}
+                    </p>                   
+                </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Companies
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-chip-list>
+                        <mat-chip *ngFor="let com of problem.companyList" color="primary" selected>{{com}}</mat-chip>
+                    </mat-chip-list>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Tags
+                </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-chip-list>
+                    <mat-chip color="accent" selected>{{problem.tag}}</mat-chip>
+                </mat-chip-list>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <button mat-button (click)="openDialog()">Open dialog</button>
+
     </div>
   </div>
-  
+
+  <p></p>
   <!-- Second Half -->
   
-  <div class="col-md-6 bg-white h-md-100 loginarea">
+  <div class="col-md-8 bg-white h-md-100 loginarea">
         <div class="text" *ngIf="problem">
-            <mat-tab-group animationDuration="500ms">
-                <mat-tab *ngFor="let item of problem.code; let i = index" label= "{{item.isAccepted? 'Accepted': 'Not Accepted'}}"> 
-                    <p>{{item.performance}}</p>
-                    <p>{{item.code_language}}</p>
-                    <p>{{item.time_created}}</p>
-                    <p>{{item.time_modified}}</p>
-                    <p>{{item.content}}</p>
-                    <p>{{item.note.content}}</p>
+            <mat-tab-group animationDuration="300ms">
+                <mat-tab *ngFor="let item of problem.codeList" label= "{{item.codeLanguage}}"> 
+                    <!-- <p>{{item.performance}}</p> -->
+                    <mat-chip id="language" color=bg-white selected>{{item.isAccepted? 'Accepted': 'Not Accepted'}}</mat-chip>
+                    <!-- <p>{{item.time_created}}</p> -->
+                    <!-- <p>{{item.time_modified}}</p> -->
+                    <mat-chip id="language" color=bg-white selected>{{item.performance}} sec</mat-chip>
+                    <!-- <mat-divider></mat-divider> -->
+                    <h4 mat-subheader>Note</h4>
+                    <p class="mat-body-6" *ngIf="item.note">
+                        {{item.note.content}}
+                    </p>
+                    <!-- <h4 mat-subheader>Code</h4> -->
+                    <pre class="prettyprint">{{item.content}}</pre>
+                    <!-- <mat-divider></mat-divider> -->
+                    
+                    
                 </mat-tab>
             </mat-tab-group>
         </div>

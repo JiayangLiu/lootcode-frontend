@@ -32,6 +32,14 @@ import { ProblemFormComponent } from './admin/problem-form/problem-form.componen
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {DialogContentExampleDialog} from './editor/editor.component'
 
 @NgModule({
   declarations: [
@@ -45,14 +53,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     AdminProblemsComponent,
     LoginComponent,
     MyDashboardComponent,
-    ProblemFormComponent
+    ProblemFormComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
     MatTabsModule,
+    MatListModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatChipsModule,
     AppRoutingModule,
     MatGridListModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'problems/:id', component: EditorComponent },
@@ -79,6 +95,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MockBackend,
     BaseRequestOptions
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogContentExampleDialog
+  ],
 })
 export class AppModule { }

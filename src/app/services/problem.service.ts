@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import { Problem } from '../problems/problem.model';
 import { ProblemDetail } from '../problems/problem.detail.model';
 import { UserProblem} from '../problems/problem.detail.model';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -15,26 +16,36 @@ export class ProblemService {
   private url = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problems';
 
   private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
+  private url4detailproblem4realServer = 'http://power3.cs.virginia.edu:18888/api/problem'
+  private urlLocal = 'http://localhost:18888/api/problem'
   constructor(private http: HttpClient) { }
 
   problemsObservable : Observable<Problem[]>;
   problemDetailObservable: Observable<ProblemDetail>;
-  userProblem: UserProblem;
 
   getAllProblems() {
     this.problemsObservable = this.http.get<Problem[]>(this.url);
     return this.problemsObservable;
   }
 
-  getProblemDetail(username:string, problemID:number) {
+  getProblemDetail() {
     this.problemDetailObservable = this.http.get<ProblemDetail>(this.url4detailproblem);
     return this.problemDetailObservable;
   }
 
-  getProblemDetailPost(username:string, problemID:number) {
-    this.userProblem.problem_id = problemID;
-    this.userProblem.user_id = username;
-    this.problemDetailObservable = this.http.post<ProblemDetail>(this.url4detailproblem, this.userProblem);
+  getProblemDetailPost(userID:string, problemID:string) {
+    // this.userProblem.problem_id = problemID;
+    // this.userProblem.user_id = username;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    this.problemDetailObservable = this.http.post<ProblemDetail>(this.urlLocal, JSON.stringify(
+      {
+        "problem_id": problemID,
+        "user_id": userID
+      }),httpOptions);
     return this.problemDetailObservable;
   }
 

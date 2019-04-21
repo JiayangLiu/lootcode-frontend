@@ -1,7 +1,7 @@
 export class ProblemDetail {
-    id : number;
-    name: string;
-    desc: string;
+    problemId : number;
+    title: string;
+    description: string;
     difficulty: string;
     Company: string[];
     tag: string;

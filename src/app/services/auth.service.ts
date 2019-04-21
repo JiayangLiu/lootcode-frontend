@@ -9,7 +9,8 @@ export class AuthService {
   }
 
   login(credentials) { 
-   return this.http.post('/api/authenticate', 
+    console.log("credentials: ", credentials);
+    return this.http.post('/api/authenticate', 
       JSON.stringify(credentials))
       .pipe(map(response => {   // different after upgrade
         let result = response.json();
