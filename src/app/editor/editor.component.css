@@ -70,3 +70,8 @@ p{
 /* pre.prettyprint {
     border: none !important;
 } */
+
+.addbutton{
+    text-align: center;
+    width: 100%;
+}

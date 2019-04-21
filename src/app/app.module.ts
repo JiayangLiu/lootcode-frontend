@@ -40,6 +40,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {DialogContentExampleDialog} from './editor/editor.component'
+import {MatInputModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -67,8 +69,10 @@ import {DialogContentExampleDialog} from './editor/editor.component'
     MatChipsModule,
     AppRoutingModule,
     MatGridListModule,
+    MatInputModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    MatButtonModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'problems/:id', component: EditorComponent },
