@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProblemService } from '../../services/problem.service';
 
-import { HttpClient } from '@angular/common/http';
 import { Problem } from '../../problems/problem.model';
 import { Subscription } from "rxjs";
 import { DataTableResource } from 'angular7-data-table';

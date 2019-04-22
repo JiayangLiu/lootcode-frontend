@@ -4,7 +4,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign Up</h5>
-            <form class="form-signin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+            <form class="form-signin" #f="ngForm" (ngSubmit)="signUp(f.value)">
               <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username and/or password.</div>
   
               <mat-form-field class="form-signin">

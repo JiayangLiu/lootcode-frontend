@@ -21,13 +21,13 @@
 
       <li ngbDropdown class="nav-item dropdown">
         <a *ngIf="!authService.isLoggedIn()" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login here</a>
-        <a *ngIf="authService.isLoggedIn()" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ authService.currentUser.username }}</a>
+        <a *ngIf="authService.isLoggedIn()" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ authService.getUsername() }}</a>
 
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item" routerLink="/login" *ngIf="!authService.isLoggedIn()">Login</a>
           <a class="dropdown-item" routerLink="/signup" *ngIf="!authService.isLoggedIn()">Sign Up</a>
-          <a class="dropdown-item" routerLink="/my/dashboard" *ngIf="authService.isLoggedIn()">Dashboard</a>
-          <a class="dropdown-item" routerLink="/admin/problems" *ngIf="authService.isLoggedIn() && authService.currentUser.admin">Manage Problems</a>
+          <!-- <a class="dropdown-item" routerLink="/my/dashboard" *ngIf="authService.isLoggedIn()">Dashboard</a> -->
+          <a class="dropdown-item" routerLink="/admin/problems" *ngIf="authService.isLoggedIn() && authService.isAdmin()">Manage Problems</a>
           <a class="dropdown-item" (click)="authService.logout()" *ngIf="authService.isLoggedIn()">Logout</a>
         </div>
       </li>
