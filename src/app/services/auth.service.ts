@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";   // different after upgrade
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
