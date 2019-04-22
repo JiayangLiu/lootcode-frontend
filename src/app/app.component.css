@@ -1,0 +1,20 @@
+.bg-img {
+    /* The image used */
+    background-image: url("./../assets/main-background.png");
+  
+    /* Full height */
+    height: 100vh;
+    width: 100vw;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;  /* no-repeat */
+    background-size: cover;
+  
+    background-attachment: fixed;
+  }
+
+.fly-over {
+  height: calc( 100vh - 5px);
+  overflow: auto;
+}

@@ -26,7 +26,7 @@ export class EditorComponent implements OnInit {
   name: string;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private authService: AuthService,
     private service: ProblemService,
     public dialog: MatDialog
@@ -38,8 +38,8 @@ export class EditorComponent implements OnInit {
       console.log('problem_id: ',this.problemID);
 
     });
-    console.log('user_id: ', this.authService.currentUser.userid)
-    this.subscriptionProblems = this.service.getProblemDetailPost(this.authService.currentUser.userid, this.problemID)
+    console.log('user_id: ', this.authService.getUserId())
+    this.subscriptionProblems = this.service.getProblemDetailPost(+this.authService.getUserId(), +this.problemID)
       .subscribe(problem => {
         this.problem = problem[0];
         console.log(this.problem);
@@ -56,11 +56,16 @@ export class EditorComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       width: '600px',
       height: '500px',
-      data: {user_id: this.authService.currentUser.userid, problem_id: this.problemID}
+      data: {user_id: this.authService.getUserId(), problem_id: this.problemID, self:this}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      // this.subscriptionProblems = this.service.getProblemDetailPost(+this.authService.getUserId(), +this.problemID)
+      // .subscribe(problem => {
+      //   this.problem = problem[0];
+      //   console.log(this.problem);
+      // });
     });
   }
 
@@ -116,6 +121,7 @@ export class DialogContentExampleDialog {
       .subscribe(status => {
         this.status = status;
         console.log(this.status);
+        
       });
 
   }

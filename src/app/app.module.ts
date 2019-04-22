@@ -17,8 +17,8 @@ import { TagsComponent } from './tags/tags.component';
 import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.component';
 import { LoginComponent } from './login/login.component';
 
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
@@ -31,7 +31,6 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
@@ -43,6 +42,11 @@ import {DialogContentExampleDialog} from './editor/editor.component'
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './signup/signup.component';
+import { AdminNewproblemComponent } from './admin/admin-newproblem/admin-newproblem.component';
+import { AdminEditproblemComponent } from './admin/admin-editproblem/admin-editproblem.component';
+import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-deleteproblem.component';
 import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
@@ -58,7 +62,11 @@ import {MatSelectModule} from '@angular/material/select';
     LoginComponent,
     MyDashboardComponent,
     ProblemFormComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    SignupComponent,
+    AdminNewproblemComponent,
+    AdminEditproblemComponent,
+    AdminDeleteproblemComponent
   ],
   imports: [
     BrowserModule,
@@ -84,15 +92,22 @@ import {MatSelectModule} from '@angular/material/select';
       { path: 'companies', component: CompaniesComponent },
       { path: 'tags', component: TagsComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
       { path: 'my/dashboard', component: MyDashboardComponent },
       { path: 'admin/problems', component: AdminProblemsComponent },
-      { path: 'admin/problems/new', component: ProblemFormComponent }
+      { path: 'admin/problems/new', component: AdminNewproblemComponent },
+      { path: 'admin/problems/edit/:id', component: AdminEditproblemComponent },
+      { path: 'admin/problems/delete/:id', component: AdminDeleteproblemComponent }
 
     ]),
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    DataTableModule
+    DataTableModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
