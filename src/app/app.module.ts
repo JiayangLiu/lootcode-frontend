@@ -17,6 +17,7 @@ import { TagsComponent } from './tags/tags.component';
 import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.component';
 import { LoginComponent } from './login/login.component';
 
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,12 +31,23 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
-import { MatSelectModule, MatFormFieldModule, MatOptionModule, MatInputModule } from '@angular/material';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {DialogContentExampleDialog} from './editor/editor.component'
+import {MatInputModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { AdminNewproblemComponent } from './admin/admin-newproblem/admin-newproblem.component';
 import { AdminEditproblemComponent } from './admin/admin-editproblem/admin-editproblem.component';
 import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-deleteproblem.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -50,6 +62,7 @@ import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-d
     LoginComponent,
     MyDashboardComponent,
     ProblemFormComponent,
+    DialogContentExampleDialog,
     SignupComponent,
     AdminNewproblemComponent,
     AdminEditproblemComponent,
@@ -57,8 +70,21 @@ import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-d
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatListModule,
+    MatSlideToggleModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatDialogModule,
+    MatChipsModule,
     AppRoutingModule,
     MatGridListModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatButtonModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'problems/:id', component: EditorComponent },
@@ -78,10 +104,8 @@ import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-d
     FormsModule,
     HttpClientModule,
     DataTableModule,
-    
     MatSelectModule,
     MatFormFieldModule,
-    MatOptionModule,
     MatInputModule,
     BrowserAnimationsModule
   ],
@@ -94,6 +118,9 @@ import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-d
     MockBackend,
     BaseRequestOptions
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogContentExampleDialog
+  ],
 })
 export class AppModule { }

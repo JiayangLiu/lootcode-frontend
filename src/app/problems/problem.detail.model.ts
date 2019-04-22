@@ -1,11 +1,11 @@
 export class ProblemDetail {
-    id : number;
-    name: string;
+    problemId : number;
+    title: string;
     desc: string;
     difficulty: string;
-    company: string;
+    Company: string[];
     tag: string;
-    code: Code[];
+    code: Code;
 }
 
 export class Code{
@@ -23,3 +23,9 @@ export class Note{
     time_modified: string;
     content: string;
 }
+
+export class UserProblem{
+    user_id: string;
+    problem_id: number;
+}
+

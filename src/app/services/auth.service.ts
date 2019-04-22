@@ -124,4 +124,8 @@ export class AuthService {
   getUsername() {
     return localStorage.getItem('username');
   }
+
+  getUserId() {
+    return "1"; // localStorage.getItem('userid');
+  }
 }
