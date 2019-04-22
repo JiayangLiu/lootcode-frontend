@@ -1,7 +1,7 @@
 <div class="component-body">
 
     <!-- <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script> -->
-    <div class="d-md-flex h-md-100 align-items-center">
+    <div class="d-md-flex h-md-100 align-items-center fly-over">
 
         <!-- First Half -->
 
@@ -70,8 +70,9 @@
 
         <div class="col-md-8 bg-white h-md-100 loginarea">
             <div class="text">
-                <mat-tab-group animationDuration="300ms" *ngIf="problem">
-                    <mat-tab *ngFor="let item of problem.codeList" label="{{item.codeLanguage}}">
+                <mat-tab-group animationDuration="300ms" *ngIf="problem" [selectedIndex]="selected.value"
+                (selectedIndexChange)="selected.setValue($event)">
+                    <mat-tab *ngFor="let item of problem.codeList" label="{{item.codeLanguage}}" >
                         <!-- <p>{{item.performance}}</p> -->
                         <mat-chip id="language" color=bg-white selected>{{item.isAccepted? 'Accepted': 'Not Accepted'}}
                         </mat-chip>
@@ -86,8 +87,9 @@
                         <!-- <h4 mat-subheader>Code</h4> -->
                         <pre class="prettyprint">{{item.content}}</pre>
                         <!-- <mat-divider></mat-divider> -->
-
-
+                        <button class="addbutton" mat-stroked-button color="primary" (click)="openDialog4edit()">Edit
+                            Code and Note</button>
+                        <p></p>
                     </mat-tab>
                 </mat-tab-group>
             </div>

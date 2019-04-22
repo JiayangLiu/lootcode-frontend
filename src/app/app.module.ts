@@ -39,6 +39,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {DialogContentExampleDialog} from './editor/editor.component'
+import {DialogContentExampleDialog4edit} from './editor/editor.component'
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -63,6 +64,7 @@ import {MatSelectModule} from '@angular/material/select';
     MyDashboardComponent,
     ProblemFormComponent,
     DialogContentExampleDialog,
+    DialogContentExampleDialog4edit,
     SignupComponent,
     AdminNewproblemComponent,
     AdminEditproblemComponent,
@@ -120,7 +122,8 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    DialogContentExampleDialog4edit
   ],
 })
 export class AppModule { }

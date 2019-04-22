@@ -126,6 +126,6 @@ export class AuthService {
   }
 
   getUserId() {
-    return "1"; // localStorage.getItem('userid');
+    return localStorage.getItem('userid');
   }
 }

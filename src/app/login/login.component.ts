@@ -44,6 +44,7 @@ export class LoginComponent {
         if (user.userName != null) {
           localStorage.setItem('username', user.userName);
           localStorage.setItem('admin', user.admin? "true" : "false");
+          localStorage.setItem('userid', <string><unknown>user.userId);
           this.router.navigate(['/']);
         } else {
           this.invalidLogin = true;
