@@ -39,11 +39,11 @@ mat-grid-tile {
 }
 
 .medium {
-    color: yellow;
+    color: rgb(202, 119, 10);
 }
 
 .hard {
-    background-color: red;
+    color: red;
 }
 
 .desc{
@@ -80,3 +80,6 @@ mat-slide-toggle{
     margin-left: 12px;
 }
 
+.fly-over {
+    overflow: auto;
+}

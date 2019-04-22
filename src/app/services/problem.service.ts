@@ -58,7 +58,7 @@ export class ProblemService {
         'Content-Type':  'application/json'
       })
     };
-    this.problemDetailObservable = this.http.post<ProblemDetail>(this.urlLocal, JSON.stringify(
+    this.problemDetailObservable = this.http.post<ProblemDetail>(this.url4detailproblem4realServer, JSON.stringify(
       {
         "problem_id": problemID,
         "user_id": userID
@@ -73,7 +73,7 @@ export class ProblemService {
         'Content-Type':  'application/json'
       })
     };
-    this.updateObservable = this.http.post<number>(this.url4updateLocal, JSON.stringify(
+    this.updateObservable = this.http.post<number>(this.url4updateRealServer, JSON.stringify(
     {
       "user_id": userID,
       "problem_id": problemID,
@@ -102,7 +102,7 @@ export class ProblemService {
         'Content-Type':  'application/json'
       })
     };
-    this.updateObservable = this.http.post<number>(this.url4updateCodeLocal, JSON.stringify(
+    this.updateObservable = this.http.post<number>(this.url4updateCodeRealServer, JSON.stringify(
     {
       "user_id": userID,
       "problem_id": problemID,
