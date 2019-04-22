@@ -2,7 +2,7 @@
 
     <a routerLink="/admin/problems/new" class="btn btn-primary">New Problem</a>
 
-    <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+    <data-table [indexColumn]=false [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
         <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
         </data-table-column>
 
@@ -22,15 +22,15 @@
             </ng-template>
         </data-table-column>
 
-        <data-table-column [property]="'$key'">
+        <!-- <data-table-column [property]="'edit'">
             <ng-template #dataTableCell let-item="item">
-                <a [routerLink]="['/admin/problems/edit/', item.$key]">Edit</a>
+                <a [routerLink]="['/admin/problems/edit/', item.id]">Edit</a>
             </ng-template>
-        </data-table-column>
+        </data-table-column> -->
 
-        <data-table-column [property]="'$key'">
+        <data-table-column [property]="'delete'">
             <ng-template #dataTableCell let-item="item">
-                <a (click)="deleteItem(item.id)">Delete</a>
+                <a [routerLink]="['/admin/problems/delete/', item.id]">Delete</a>
             </ng-template>
         </data-table-column>
 

@@ -5,7 +5,7 @@
   
 .label.difficulty {
     /* padding-top: 0.0em; */
-    color: #fbfdfa;
+    /* color: #fbfdfa; */
     font-size: 20px;
 }
 
@@ -14,15 +14,15 @@
 }
   
 .diff-easy {
-    background-color: #92cf5c;
+    color: #92cf5c;
 }
   
 .diff-medium {
-    background-color: #f49542;
+    color: #f49542;
 }
   
 .diff-hard {
-    background-color: #dd0d1e;
+    color: #dd0d1e;
 }
 
 

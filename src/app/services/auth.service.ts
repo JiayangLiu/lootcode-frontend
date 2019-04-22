@@ -36,7 +36,7 @@ export class AuthService {
         'Content-Type': 'application/json'
       })
     };
-    this.loginObservable = this.http.post<User>('http://power3.cs.virginia.edu:18888/api/login', JSON.stringify(
+    this.loginObservable = this.http.post<User>('http://localhost:18888/api/login', JSON.stringify(
       {
         "email": email,
         "password": password
@@ -77,7 +77,7 @@ export class AuthService {
         'Content-Type': 'application/json'
       })
     };
-    this.signupObservable = this.http.post<User>('http://power3.cs.virginia.edu:18888/api/user/signup', JSON.stringify(
+    this.signupObservable = this.http.post<User>('http://localhost:18888/api/user/signup', JSON.stringify(
       {
         "email": email,
         "userName": username,

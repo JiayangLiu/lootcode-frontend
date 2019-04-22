@@ -13,7 +13,7 @@
   <!-- <p> Selected company: {{ selectedValue }} </p> -->
 
 
-  <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+  <data-table [indexColumn]=false [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
     <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
     </data-table-column>
 

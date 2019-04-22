@@ -12,7 +12,8 @@ import { Status } from './status.model';
   providedIn: 'root'
 })
 export class ProblemService {
-  private url = 'http://power3.cs.virginia.edu:18888/api/problems';
+  // private url = 'http://power3.cs.virginia.edu:18888/api/problems';
+  private url = 'http://localhost:18888/api/problems';
 
   private url4detailproblem = 'https://my-json-server.typicode.com/JiayangLiu/lootcode-mockdb/problem';
   constructor(private http: HttpClient) { }
@@ -27,12 +28,12 @@ export class ProblemService {
   }
 
   getProblemCompany(company_name) {
-    this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/companies/'+company_name);
+    this.problemsObservable = this.http.get<Problem[]>('http://localhost:18888/api/companies/'+company_name);
     return this.problemsObservable;
  }
 
   getProblemTag(tag_name) {
-  this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/tags/'+tag_name);
+  this.problemsObservable = this.http.get<Problem[]>('http://localhost:18888/api/tags/'+tag_name);
   return this.problemsObservable;
   }
 
@@ -61,7 +62,7 @@ export class ProblemService {
     else if (inputValues.difficulty == "Hard")
       difficulty = 3;
 
-    this.createObservable = this.http.post<Status>('http://power3.cs.virginia.edu:18888/api/problem/insert', JSON.stringify(
+    this.createObservable = this.http.post<Status>('http://localhost:18888/api/problem/insert', JSON.stringify(
       {
         "problemId": -1,
         "description": inputValues.description,
@@ -74,7 +75,12 @@ export class ProblemService {
   }
 
   deleteProblem(problem_id) {
-    this.problemsObservable = this.http.get<Problem[]>('http://power3.cs.virginia.edu:18888/api/admin/delete/'+problem_id);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this.problemsObservable = this.http.get<Problem[]>('http://localhost:18888/api/problem/delete/'+problem_id, httpOptions);
     return this.problemsObservable;
   }
 

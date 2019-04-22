@@ -1,9 +1,10 @@
+<div class="fly-over">
 <div class="component-body">
   <p>
     <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
   </p>
 
-  <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+  <data-table [indexColumn]=false [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
     <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
     </data-table-column>
 
@@ -26,7 +27,7 @@
   </data-table>
 
 </div>
-
+</div>
 <!-- <table class="table">
     <thead>
       <tr>

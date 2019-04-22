@@ -1,3 +1,20 @@
+.bg-img {
+  /* The image used */
+  background-image: url("./../../assets/main-background.png");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-attachment: fixed;
+}
+
+
+
 /*!
  * Start Bootstrap - Freelancer v5.0.4 (https://startbootstrap.com/template-overviews/freelancer)
  * Copyright 2013-2019 Start Bootstrap

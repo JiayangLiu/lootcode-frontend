@@ -55,6 +55,17 @@ export class ProblemsComponent implements OnInit, OnDestroy {
       .then(items => this.items = items);
   }
 
+  filter(query: string) {
+    if (!this.tableResource)
+      return;
+
+    let filteredProblems = (query) ?
+      this.problems.filter(p => p.title.toLowerCase().includes(query.toLowerCase()))
+      : this.problems;
+
+    this.initializeTable(filteredProblems);
+  }
+
   ngOnDestroy() {
     this.subscriptionProblems.unsubscribe();
   }
