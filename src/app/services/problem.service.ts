@@ -20,6 +20,8 @@ export class ProblemService {
   private urlLocal = 'http://localhost:18888/api/problem'
   private url4updateLocal = 'http://localhost:18888/api/problem/submission'
   private url4updateRealServer = 'http://power3.cs.virginia.edu:18888/api/problem/submission'
+  private url4updateCodeLocal = 'http://localhost:18888/api/problem/update'
+  private url4updateCodeRealServer = 'http://power3.cs.virginia.edu:18888/api/problem/update'
 
   constructor(private http: HttpClient) { }
 
@@ -72,30 +74,62 @@ export class ProblemService {
       })
     };
     this.updateObservable = this.http.post<number>(this.url4updateLocal, JSON.stringify(
-      {
-        "user_id": userID,
-        "problem_id": problemID,
-        "code":
-            {
-            "isAccepted":accepted,
-            "performance":performance,
-            "code_language":language,
-            "time_created":time_created,
-            "time_modified":time_modified,
-            "content":code
-            },
-          "note":{
-                  "content":note,
-                  "time_created":time_created,
-                  "time_modified":time_modified
-          }
+    {
+      "user_id": userID,
+      "problem_id": problemID,
+      "code":
+          {
+          "isAccepted":accepted,
+          "performance":performance,
+          "code_language":language,
+          "time_created":time_created,
+          "time_modified":time_modified,
+          "content":code
+          },
+        "note":{
+                "content":note,
+                "time_created":time_created,
+                "time_modified":time_modified
+        }
     }), httpOptions);
+    return this.updateObservable;
+  }
+
+  updateCodeNotePost(userID:number, problemID:number, codeID: number, language:string, accepted: boolean, performance:number, 
+    code:string, note:string, time_created:string, time_modified:string){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    this.updateObservable = this.http.post<number>(this.url4updateCodeLocal, JSON.stringify(
+    {
+      "user_id": userID,
+      "problem_id": problemID,
+      "code":
+          {
+          "code_id" : codeID,
+          "isAccepted":accepted,
+          "performance":performance,
+          "code_language":language,
+          "time_created":time_created,
+          "time_modified":time_modified,
+          "content":code
+          },
+        "note":{
+                "content":note,
+                "time_created":time_created,
+                "time_modified":time_modified
+        }
+    }), httpOptions);
+
     console.log(JSON.stringify(
       {
         "user_id": userID,
         "problem_id": problemID,
         "code":
             {
+            "code_id" : codeID,
             "isAccepted":accepted,
             "performance":performance,
             "code_language":language,
@@ -108,7 +142,7 @@ export class ProblemService {
                   "time_created":time_created,
                   "time_modified":time_modified
           }
-    }));
+      }))
     return this.updateObservable;
   }
 
