@@ -1,6 +1,7 @@
 export class Problem {
-    id : number;
-    name: string;
-    difficulty: string;
+    problemId : number;
+    description: string;
+    title: string;
+    difficulty: any;
+    tag: string;
 }
-

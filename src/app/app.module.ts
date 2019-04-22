@@ -17,7 +17,7 @@ import { TagsComponent } from './tags/tags.component';
 import { AdminProblemsComponent } from './admin/admin-problems/admin-problems.component';
 import { LoginComponent } from './login/login.component';
 
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MyDashboardComponent } from './my/my-dashboard/my-dashboard.component';
@@ -30,6 +30,13 @@ import { MockBackend } from '@angular/http/testing';
 import { ProblemFormComponent } from './admin/problem-form/problem-form.component';
 import { ProblemService } from './services/problem.service';
 import { DataTableModule } from 'angular7-data-table';
+import { MatSelectModule, MatFormFieldModule, MatOptionModule, MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupComponent } from './signup/signup.component';
+import { AdminNewproblemComponent } from './admin/admin-newproblem/admin-newproblem.component';
+import { AdminEditproblemComponent } from './admin/admin-editproblem/admin-editproblem.component';
+import { AdminDeleteproblemComponent } from './admin/admin-deleteproblem/admin-deleteproblem.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +49,11 @@ import { DataTableModule } from 'angular7-data-table';
     AdminProblemsComponent,
     LoginComponent,
     MyDashboardComponent,
-    ProblemFormComponent
+    ProblemFormComponent,
+    SignupComponent,
+    AdminNewproblemComponent,
+    AdminEditproblemComponent,
+    AdminDeleteproblemComponent
   ],
   imports: [
     BrowserModule,
@@ -55,15 +66,24 @@ import { DataTableModule } from 'angular7-data-table';
       { path: 'companies', component: CompaniesComponent },
       { path: 'tags', component: TagsComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
       { path: 'my/dashboard', component: MyDashboardComponent },
       { path: 'admin/problems', component: AdminProblemsComponent },
-      { path: 'admin/problems/new', component: ProblemFormComponent }
+      { path: 'admin/problems/new', component: AdminNewproblemComponent },
+      { path: 'admin/problems/edit/:id', component: AdminEditproblemComponent },
+      { path: 'admin/problems/delete/:id', component: AdminDeleteproblemComponent }
 
     ]),
     NgbModule.forRoot(),
     FormsModule,
     HttpClientModule,
-    DataTableModule
+    DataTableModule,
+    
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,

@@ -1,4 +1,11 @@
-:root {
+
+  .example-full-width {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;
   }

@@ -29,7 +29,7 @@ export class EditorComponent implements OnInit {
       console.log(this.problemID);
 
     });
-    console.log(this.authService.currentUser.userid)
+    // console.log(this.authService.currentUser.userid)
     this.subscriptionProblems = this.service.getProblemDetail()
       .subscribe(problem => {
         this.problem = problem;

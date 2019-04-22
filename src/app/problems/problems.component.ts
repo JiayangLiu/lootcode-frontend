@@ -2,9 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProblemService } from '../services/problem.service';
 
 import { HttpClient } from '@angular/common/http';
-import { Http } from '@angular/http';
 import { Problem } from '../problems/problem.model';
-import {Subscription} from "rxjs";
+import { Subscription } from "rxjs";
 import { DataTableResource } from 'angular7-data-table';
 
 @Component({
@@ -12,8 +11,6 @@ import { DataTableResource } from 'angular7-data-table';
   templateUrl: './problems.component.html',
   styleUrls: ['./problems.component.css']
 })
-
-
 export class ProblemsComponent implements OnInit, OnDestroy {
   problems: Problem[];  // problems array from Server(Backend)
   subscriptionProblems: Subscription;
@@ -34,6 +31,15 @@ export class ProblemsComponent implements OnInit, OnDestroy {
 
   // factorizing the data table initialization process
   private initializeTable(problems: Problem[]) {
+    for (let p of problems) {
+      if (p.difficulty == 1)
+        p.difficulty = "Easy";
+      if (p.difficulty == 2)
+        p.difficulty = "Medium";
+      if (p.difficulty == 3)
+        p.difficulty = "Hard";
+    }
+
     this.tableResource = new DataTableResource(problems);
     this.tableResource.query({ offset: 0 })
       .then(items => this.items = items);
@@ -54,7 +60,7 @@ export class ProblemsComponent implements OnInit, OnDestroy {
       return;
 
     let filteredProblems = (query) ?
-      this.problems.filter(p => p.name.toLowerCase().includes(query.toLowerCase()))
+      this.problems.filter(p => p.title.toLowerCase().includes(query.toLowerCase()))
       : this.problems;
 
     this.initializeTable(filteredProblems);

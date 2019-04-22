@@ -1,1 +1,39 @@
-<a routerLink="/admin/problems/new" class="btn btn-primary">New Problem</a>
+<div class="component-body">
+
+    <a routerLink="/admin/problems/new" class="btn btn-primary">New Problem</a>
+
+    <data-table [indexColumn]=false [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+        <data-table-column [property]="'id'" [header]="'#'" [sortable]="true" [resizable]="true">
+        </data-table-column>
+
+        <data-table-column [property]="'title'" [header]="'Title'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableCell let-item="item">
+                <a class="title" [routerLink]="['/problems',item.id]" routerLinkActive="active">
+                    {{ item.title }}
+                </a>
+            </ng-template>
+        </data-table-column>
+
+        <data-table-column [property]="'difficulty'" [header]="'Difficulty'" [sortable]="true" [resizable]="true">
+            <ng-template #dataTableCell let-item="item">
+                <span class="{{'pull-left label difficulty diff-' + item.difficulty.toLocaleLowerCase()}}">
+                    {{ item.difficulty }}
+                </span>
+            </ng-template>
+        </data-table-column>
+
+        <!-- <data-table-column [property]="'edit'">
+            <ng-template #dataTableCell let-item="item">
+                <a [routerLink]="['/admin/problems/edit/', item.id]">Edit</a>
+            </ng-template>
+        </data-table-column> -->
+
+        <data-table-column [property]="'delete'">
+            <ng-template #dataTableCell let-item="item">
+                <a [routerLink]="['/admin/problems/delete/', item.id]">Delete</a>
+            </ng-template>
+        </data-table-column>
+
+    </data-table>
+
+</div>
