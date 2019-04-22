@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import {Subscription} from "rxjs";
 import { HttpClientModule } from '@angular/common/http'; 
@@ -54,8 +54,8 @@ export class EditorComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
-      width: '600px',
-      height: '500px',
+      width: '700px',
+      height: '600px',
       data: {user_id: this.authService.getUserId(), problem_id: this.problemID, self:this}
     });
 
@@ -99,6 +99,7 @@ export class DialogContentExampleDialog {
 
   constructor(
     private service: ProblemService,
+    private route: Router,
     public dialogRef: MatDialogRef<DialogContentExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
@@ -121,7 +122,8 @@ export class DialogContentExampleDialog {
       .subscribe(status => {
         this.status = status;
         console.log(this.status);
-        
+        let link = '/problems/' + this.data.problem_id;
+        this.route.navigate([link]);
       });
 
   }

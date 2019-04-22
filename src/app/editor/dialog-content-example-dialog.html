@@ -24,7 +24,7 @@
 </form>
  -->
 
-<div mat-dialog-content style="height: 360px">
+<div mat-dialog-content style="height: 450px">
 <mat-list>
     <mat-list-item>
         <mat-slide-toggle [(ngModel)]="toggleValue">Is Accepted</mat-slide-toggle>
@@ -62,11 +62,12 @@
         <form class="example-form">
             <p></p>
             <mat-form-field class="example-full-width">
-                <textarea name="code" matInput placeholder="Code:" [(ngModel)]="codeValue"></textarea>
+                <pre class="prettyprint"><textarea name="code" matInput placeholder="Code:" matTextareaAutosize [(ngModel)]="codeValue"></textarea></pre>
             </mat-form-field>
             <p></p>
+            <p></p>
             <mat-form-field class="example-full-width" >
-                <textarea name="note" matInput placeholder="Note:" [(ngModel)]="noteValue"></textarea>
+                <textarea name="note" matInput placeholder="Note:" matTextareaAutosize [(ngModel)]="noteValue"></textarea>
             </mat-form-field>
         </form>
 

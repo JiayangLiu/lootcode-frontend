@@ -19,6 +19,8 @@ export class ProblemService {
   private url4detailproblem4realServer = 'http://power3.cs.virginia.edu:18888/api/problem'
   private urlLocal = 'http://localhost:18888/api/problem'
   private url4updateLocal = 'http://localhost:18888/api/problem/submission'
+  private url4updateRealServer = 'http://power3.cs.virginia.edu:18888/api/problem/submission'
+
   constructor(private http: HttpClient) { }
 
   problemsObservable : Observable<Problem[]>;

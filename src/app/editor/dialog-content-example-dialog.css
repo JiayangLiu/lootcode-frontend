@@ -17,3 +17,7 @@ mat-list-item{
 mat-dialog-content{
     height: 100%;
 }
+
+pre.prettyprint {
+    border: none !important;
+}
