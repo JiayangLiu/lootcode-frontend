@@ -1,9 +1,82 @@
-<mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-        {{tile.text}}
-    </mat-grid-tile>
-</mat-grid-list>
+<h2 mat-dialog-title>Add Code and Note</h2>
+
+<!-- <mat-slide-toggle>Accepted</mat-slide-toggle>
+<mat-form-field>
+    <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected">
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+</mat-form-field>
+    
+<p>You selected: {{selected}}</p>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Favorite food" value="Sushi">
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+</form>
+ -->
+
+<div mat-dialog-content style="height: 360px">
+<mat-list>
+    <mat-list-item>
+        <mat-slide-toggle [(ngModel)]="toggleValue">Is Accepted</mat-slide-toggle>
+    </mat-list-item>
+    <p></p>
+    <!-- <mat-divider></mat-divider> -->
+
+    <mat-list-item>
+            <mat-form-field class="example-full-width">
+                    <mat-label>Programming Language</mat-label>
+                        <mat-select [(value)]="selected">
+                            <mat-option value="Java">Java</mat-option>
+                            <mat-option value="C">C</mat-option>
+                            <mat-option value="C++">C++</mat-option>
+                            <mat-option value="Python">Python</mat-option>
+                            <mat-option value="JavaScript">JavaScript</mat-option>
+                            <mat-option value="Assembly">Assembly</mat-option>
+                            <mat-option value="Binary">Binary</mat-option>
+                        </mat-select>
+                </mat-form-field>
+        </mat-list-item>
+
+    <mat-list-item>
+        <mat-form-field class="example-full-width">
+            <textarea name="performance" matInput placeholder="Performance (sec)" [(ngModel)]="perfomanceValue"></textarea>
+        </mat-form-field>
+    </mat-list-item>
+    <!-- <mat-divider></mat-divider> -->
+    <!-- <p></p> -->
+
+    
+
+    <!-- <mat-divider></mat-divider> -->
+    <mat-list-item>
+        <form class="example-form">
+            <p></p>
+            <mat-form-field class="example-full-width">
+                <textarea name="code" matInput placeholder="Code:" [(ngModel)]="codeValue"></textarea>
+            </mat-form-field>
+            <p></p>
+            <mat-form-field class="example-full-width" >
+                <textarea name="note" matInput placeholder="Note:" [(ngModel)]="noteValue"></textarea>
+            </mat-form-field>
+        </form>
+
+        
+    </mat-list-item>
+
+</mat-list>
+ </div>
+<div mat-dialog-actions layout-align="center end">
+    <button mat-stroked-button (click)="onClickSubmit()">Submit</button>
+    <button mat-stroked-button (click)="onClickCancel()">Cancel</button>
+
+</div>

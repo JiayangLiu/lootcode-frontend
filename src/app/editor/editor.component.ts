@@ -8,8 +8,8 @@ import { ProblemDetail } from '../problems/problem.detail.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {
-  animal: string;
-  name: string;
+  user_id: string;
+  problem_id: string;
 }
 
 @Component({
@@ -21,7 +21,7 @@ export class EditorComponent implements OnInit {
 
   problemID: string;
   subscriptionProblems: Subscription;
-  problem: ProblemDetail = null;
+  problem: any = null;
   animal: string;
   name: string;
 
@@ -39,29 +39,28 @@ export class EditorComponent implements OnInit {
 
     });
     console.log('user_id: ', this.authService.currentUser.userid)
-    // this.subscriptionProblems = this.service.getProblemDetailPost(this.authService.currentUser.userid, this.problemID)
-    //   .subscribe(problem => {
-    //     this.problem = problem[0];
-    //     console.log(this.problem);
-    //   });
-
-    this.subscriptionProblems = this.service.getProblemDetail()
+    this.subscriptionProblems = this.service.getProblemDetailPost(this.authService.currentUser.userid, this.problemID)
       .subscribe(problem => {
         this.problem = problem[0];
         console.log(this.problem);
       });
+
+    // this.subscriptionProblems = this.service.getProblemDetail()
+    //   .subscribe(problem => {
+    //     this.problem = problem[0];
+    //     console.log(this.problem);
+    //   });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
-      width: '800px',
+      width: '600px',
       height: '500px',
-      data: {name: this.name, animal: this.animal}
+      data: {user_id: this.authService.currentUser.userid, problem_id: this.problemID}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
 
@@ -82,23 +81,48 @@ export class EditorComponent implements OnInit {
 @Component({
   selector: 'dialog-content-example-dialog',
   templateUrl: 'dialog-content-example-dialog.html',
+  styleUrls: ['dialog-content-example-dialog.css']
 })
 export class DialogContentExampleDialog {
-  tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+  subscriptionUpdate: Subscription;
+  selected = 'Java';
+  toggleValue: boolean = false;
+  perfomanceValue:string;
+  codeValue:string;
+  noteValue:string;
+  status:number;
 
   constructor(
+    private service: ProblemService,
     public dialogRef: MatDialogRef<DialogContentExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
+  onClickSubmit(): void {
     this.dialogRef.close();
+    console.log(this.toggleValue);
+    console.log(this.selected);
+    console.log(this.perfomanceValue);
+    console.log(this.codeValue);
+    console.log(this.noteValue);
+
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var cur = date+' '+time;
+
+    console.log(cur);
+    this.subscriptionUpdate = this.service.updateProblemDetailPost(+this.data.user_id, +this.data.problem_id,
+      this.selected, this.toggleValue,+this.perfomanceValue,this.codeValue,this.noteValue, cur, cur)
+      .subscribe(status => {
+        this.status = status;
+        console.log(this.status);
+      });
+
   }
 
+  onClickCancel(): void {
+    this.dialogRef.close();
+  }
 }
 
 export interface Tile {

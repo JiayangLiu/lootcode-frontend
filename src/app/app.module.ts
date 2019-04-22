@@ -42,6 +42,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {DialogContentExampleDialog} from './editor/editor.component'
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -61,8 +63,10 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     BrowserModule,
     MatCardModule,
+    MatSelectModule,
     MatTabsModule,
     MatListModule,
+    MatSlideToggleModule,
     MatExpansionModule,
     MatDividerModule,
     MatDialogModule,
